@@ -7,7 +7,7 @@ const Section=({fieldNamePrefix, section, onChange})=>{
   return(
     <fieldset>
       <legend>{section.DisplayName}</legend>
-      {section.Description?<p>section.Description</p>:""}
+      <p>{section.Description}</p>
       {section.Items.map(item=>
         <TextInput key={item.Name} name={currentFieldNamePrefix+"."+item.Name} label={item.DisplayName} onChange={onChange}/>
       )}
