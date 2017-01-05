@@ -7,12 +7,14 @@ import {Router,browserHistory} from 'react-router';
 import routes from './routes';
 import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
+import {loadMdas} from './actions/mdaActions';
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 const store=configureStore();
 store.dispatch(loadCourses());
 store.dispatch(loadAuthors());
+store.dispatch(loadMdas());
 
 render(
   <Provider store={store}>

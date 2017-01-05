@@ -8,6 +8,8 @@ const Header=()=>{
       {" | "}
       <Link to="/courses" activeClassName="active">Courses</Link>
       {" | "}
+      <Link to="/mdas" activeClassName="active">MDA Generated Forms</Link>
+      {" | "}
       <Link to="/about" activeClassName="active">About</Link>
     </nav>
   );
