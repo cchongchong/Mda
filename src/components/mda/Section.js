@@ -3,15 +3,16 @@ import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
 const Section=({fieldNamePrefix, section, onChange})=>{
+  const currentFieldNamePrefix = fieldNamePrefix ? fieldNamePrefix + "." + section.Name : section.Name;
   return(
     <fieldset>
       <legend>{section.DisplayName}</legend>
       {section.Description?<p>section.Description</p>:""}
       {section.Items.map(item=>
-        <TextInput key={item.Name} name={fieldNamePrefix+"."+item.Name} label={item.DisplayName} onChange={onChange}/>
+        <TextInput key={item.Name} name={currentFieldNamePrefix+"."+item.Name} label={item.DisplayName} onChange={onChange}/>
       )}
       {section.Sections.map(innerSection=>
-        <Section fieldNamePrefix={fieldNamePrefix?fieldNamePrefix+"."+section.Name+"."+innerSection.Name:section.Name+"."+innerSection.Name} key={innerSection.Name} section={innerSection} onChange={onChange}/>
+        <Section fieldNamePrefix={currentFieldNamePrefix} key={innerSection.Name} section={innerSection} onChange={onChange}/>
       )}
     </fieldset>
   );
