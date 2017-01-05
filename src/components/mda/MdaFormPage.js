@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as mdaActions from '../../actions/mdaActions';
 import Section from './Section';
+import {set} from 'lodash';
 
 class ManageMdaPage extends React.Component{
   constructor(props, context){
@@ -22,11 +23,11 @@ class ManageMdaPage extends React.Component{
   updateState(event){
     const field=event.target.name;
     const changedValue=event.target.value;
-    this.state.formDate[field]=changedValue;
+    set(this.state.formDate,field,changedValue);
   }
 
   onSave(){
-    alert(JSON.stringify(this.state.formDate));
+    console.log(JSON.stringify(this.state.formDate)); //eslint-disable-line no-console
   }
 
   render(){
