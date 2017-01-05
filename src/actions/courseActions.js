@@ -22,6 +22,13 @@ export function updateCourseSuccess(course){
   };
 }
 
+export function deleteCourseSuccess(courseId){
+  return{
+    type:types.DELETE_COURSE_SUCCESS,
+    courseId
+  };
+}
+
 export function loadCourses(){
   return function(dispatch){
     return courseApi.getAllCourses().then(courses=>{
@@ -41,3 +48,14 @@ export function saveCourse(course){
     });
   };
 }
+
+export function deleteCourse(courseId){
+  return function(dispatch, getState){
+    return courseApi.deleteCourse(courseId).then(savedCourse=>{
+      dispatch(deleteCourseSuccess(courseId));
+    }).catch(error=>{
+      throw(error);
+    });
+  };
+}
+

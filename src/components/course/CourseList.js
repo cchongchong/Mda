@@ -10,10 +10,11 @@ const CourseList = ({courses, deleteCourse})=>{
         <th>Author</th>
         <th>Category</th>
         <th>Length</th>
+        <th>Actions</th>
       </thead>
       <tbody>
         {courses.map(course=>
-          <CourseListRow key={course.id} course={course}/>
+          <CourseListRow key={course.id} course={course} deleteCourse={deleteCourse}/>
         )}
       </tbody>
     </table>
@@ -21,7 +22,8 @@ const CourseList = ({courses, deleteCourse})=>{
 };
 
 CourseList.propTypes={
-  courses: PropTypes.array.isRequired
+  courses: PropTypes.array.isRequired,
+  deleteCourse: PropTypes.func.isRequired
 };
 
 export default CourseList;
