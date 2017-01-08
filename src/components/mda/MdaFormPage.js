@@ -20,6 +20,12 @@ class ManageMdaPage extends React.Component{
     this.onSave=this.onSave.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(this.props.mda.Id!=nextProps.mda.Id){
+    this.setState({mda:Object.assign({},nextProps.mda)});
+    }
+  }
+
   updateState(event){
     const field=event.target.name;
     const changedValue=event.target.value;

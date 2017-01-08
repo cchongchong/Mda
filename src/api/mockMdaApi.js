@@ -6,55 +6,8 @@ import delay from './delay';
 const mdas = [
   {
     "Id": "mdas-1",
-    "Name": "ISP simple version",
-    "Sections": [
-      {
-        "Level": 0,
-        "Name": "Part1",
-        "DisplayName": "Part I Essential Information",
-        "Description": null,
-        "MultiEntry": false,
-        "Order": 0,
-        "Sections": [
-          {
-            "Level": 1,
-            "Name": "ContactInformation",
-            "DisplayName": "Contact Information",
-            "Description": null,
-            "MultiEntry": false,
-            "Order": 0,
-            "Sections": [
-
-            ],
-            "Items": [
-              {
-                "Name": "FirstName",
-                "DisplayName": "Legal First Name",
-                "Description": "Person's First Name",
-                "Type": "FreeText",
-                "ContentType": "string",
-                "Order": 0
-              },
-              {
-                "Name": "LastName",
-                "DisplayName": "Legal Last Name",
-                "Description": "Person's Last Name",
-                "Type": "FreeText",
-                "ContentType": "string",
-                "Order": 1
-              }
-            ]
-          }
-        ],
-        "Items": [
-
-        ]
-      }
-    ]
-  },
-  {
-    "Id": "mdas-2",
     "Name": "ISP complex version",
+    "FormDescriptor": "ISP",
     "Sections": [
       {
         "Level": 0,

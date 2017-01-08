@@ -8,6 +8,7 @@ import routes from './routes';
 import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
 import {loadMdas} from './actions/mdaActions';
+import {loadIsps} from './actions/ispActions';
 import './styles/styles.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,6 +16,8 @@ const store=configureStore();
 store.dispatch(loadCourses());
 store.dispatch(loadAuthors());
 store.dispatch(loadMdas());
+store.dispatch(loadIsps());
+
 
 render(
   <Provider store={store}>
