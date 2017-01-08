@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import CollapsiblePanel from '../CollapsiblePanel';
-import {get, toString} from 'lodash';
 import {Link} from 'react-router';
+import ItemViewer from './ItemViewer';
 
 const SectionViewer = ({fieldNamePrefix, section, data, sectionEditLink}) => {
   const currentFieldNamePrefix = fieldNamePrefix
@@ -21,10 +21,11 @@ const SectionViewer = ({fieldNamePrefix, section, data, sectionEditLink}) => {
         {section && section.Items && section.Items.length > 0
           ? section
             .Items
-            .map(item => <p key={item.Name}>
-              {item.DisplayName}
-              : {toString(get(data, currentFieldNamePrefix + "." + item.Name))}
-            </p>)
+            .map(item => <ItemViewer
+              key={item.Name}
+              fieldNamePrefix={currentFieldNamePrefix}
+              item={item}
+              data={data}/>)
           : ""}
         {section && section.Sections && section.Sections.length > 0
           ? section

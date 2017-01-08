@@ -1,7 +1,5 @@
 import React, {PropTypes} from 'react';
-import TextInput from '../TextInput';
-import SelectInput from '../SelectInput';
-import {get, toString} from 'lodash';
+import ItemEditor from './ItemEditor';
 
 const SectionEditor = ({fieldNamePrefix, section, data, onChange}) => {
   const currentFieldNamePrefix = fieldNamePrefix
@@ -14,11 +12,11 @@ const SectionEditor = ({fieldNamePrefix, section, data, onChange}) => {
       {section && section.Items && section.Items.length > 0
         ? section
           .Items
-          .map(item => <TextInput
+          .map(item => <ItemEditor
             key={item.Name}
-            name={currentFieldNamePrefix + "." + item.Name}
-            label={item.DisplayName}
-            value={get(data, currentFieldNamePrefix + "." + item.Name)}
+            fieldNamePrefix={currentFieldNamePrefix}
+            item={item}
+            data={data}
             onChange={onChange}/>)
         : ""}
       {section && section.Sections && section.Sections.length > 0
