@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import CollapsiblePanel from '../CollapsiblePanel';
 import {Link} from 'react-router';
+import ArraySectionViewer from './ArraySectionViewer';
 import ItemViewer from './ItemViewer';
 
 const SectionViewer = ({fieldNamePrefix, section, data, sectionEditLink}) => {
@@ -21,21 +22,23 @@ const SectionViewer = ({fieldNamePrefix, section, data, sectionEditLink}) => {
         {section && section.Items && section.Items.length > 0
           ? section
             .Items
-            .map(item => <ItemViewer
-              key={item.Name}
-              fieldNamePrefix={currentFieldNamePrefix}
-              item={item}
-              data={data}/>)
+            .map(item => <div key={item.Name}><ItemViewer fieldNamePrefix={currentFieldNamePrefix} item={item} data={data}/></div>)
           : ""}
         {section && section.Sections && section.Sections.length > 0
           ? section
             .Sections
-            .map(innerSection => <SectionViewer
-              fieldNamePrefix={currentFieldNamePrefix}
-              key={innerSection.Name}
-              section={innerSection}
-              data={data}
-              sectionEditLink={sectionEditLink}/>)
+            .map(innerSection => innerSection.MultiEntry
+              ? <ArraySectionViewer
+                  key={innerSection.Name}
+                  fieldNamePrefix={currentFieldNamePrefix}
+                  section={innerSection}
+                  data={data}/>
+              : <SectionViewer
+                key={innerSection.Name}
+                fieldNamePrefix={currentFieldNamePrefix}
+                section={innerSection}
+                data={data}
+                sectionEditLink={sectionEditLink}/>)
           : ""}
       </div>
     </CollapsiblePanel>

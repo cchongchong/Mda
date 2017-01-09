@@ -45,7 +45,11 @@ const isps = [
           "IsThereAnAdvancedDirective": false,
           "Medication": [
             {
-              "Medication": "test",
+              "Medication": "Medication 1",
+              "Prescriber": "test"
+            },
+            {
+              "Medication": "Medication 2",
               "Prescriber": "test"
             }
           ]

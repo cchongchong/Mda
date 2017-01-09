@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import ArraySectionEditor from './ArraySectionEditor';
 import ItemEditor from './ItemEditor';
 
 const SectionEditor = ({fieldNamePrefix, section, data, onChange}) => {
@@ -22,12 +23,19 @@ const SectionEditor = ({fieldNamePrefix, section, data, onChange}) => {
       {section && section.Sections && section.Sections.length > 0
         ? section
           .Sections
-          .map(innerSection => <SectionEditor
-            fieldNamePrefix={currentFieldNamePrefix}
-            key={innerSection.Name}
-            section={innerSection}
-            data={data}
-            onChange={onChange}/>)
+          .map(innerSection => innerSection.MultiEntry
+            ? <ArraySectionEditor
+                fieldNamePrefix={currentFieldNamePrefix}
+                key={innerSection.Name}
+                section={innerSection}
+                data={data}
+                onChange={onChange}/>
+            : <SectionEditor
+              fieldNamePrefix={currentFieldNamePrefix}
+              key={innerSection.Name}
+              section={innerSection}
+              data={data}
+              onChange={onChange}/>)
         : ""}
     </fieldset>
   );

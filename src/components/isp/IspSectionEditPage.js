@@ -12,8 +12,6 @@ class IspSectionEditPage extends React.Component {
 
     this.state = {
       isp: Object.assign({}, this.props.isp),
-      //metadata:Object.assign({}, this.props.metadata),
-      data: {},
       errors: {}
     };
 
@@ -25,22 +23,34 @@ class IspSectionEditPage extends React.Component {
       .bind(this);
   }
 
-  componentWillReceiveProps(nextProps){
-    if(this.props.isp.Id!=nextProps.isp.Id){
-      this.setState({isp:Object.assign({},nextProps.isp)});
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isp.Id != nextProps.isp.Id) {
+      this.setState({
+        isp: Object.assign({}, nextProps.isp)
+      });
     }
   }
 
-  updateIspState(event) {
-    let isp=this.state.isp;
-    set(isp, event.target.name, event.target.value);
-    return this.setState({isp:isp});
+  updateIspState(changes) {
+    if (changes && changes.length > 0) {
+      let isp = this.state.isp;
+      for (let change of changes) {
+        set(isp, change.name, change.value);
+      }
+      this.setState({isp: isp});
+    }
   }
 
   saveIsp(event) {
     event.preventDefault();
-    this.props.actions.saveIsp(this.state.isp);
-    this.context.router.push('/isps');
+    this
+      .props
+      .actions
+      .saveIsp(this.state.isp);
+    this
+      .context
+      .router
+      .push('/isps');
   }
 
   render() {
@@ -54,7 +64,7 @@ class IspSectionEditPage extends React.Component {
           section={this.props.section}
           data={this.state.isp}
           onChange={this.updateIspState}/>
-        <input type="button" value="Save" onClick={this.saveIsp}/>
+        <input type="button" value="Save" className="btn btn-primary" onClick={this.saveIsp}/>
       </form>
     );
   }

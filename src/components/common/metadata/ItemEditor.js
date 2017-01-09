@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import TextInput from '../TextInput';
+import TextBox from '../TextBox';
 import {get} from 'lodash';
 
 const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
@@ -7,7 +7,8 @@ const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
     ? fieldNamePrefix + "." + item.Name
     : item.Name;
   const value = get(data, currentFieldNamePrefix);
-  return (<TextInput
+  //todo check item type and value type to select input wrapper
+  return (<TextBox
     key={item.Name}
     name={currentFieldNamePrefix}
     label={item.DisplayName}

@@ -5,11 +5,12 @@ const ItemViewer = ({fieldNamePrefix, item, data}) => {
   const currentFieldNamePrefix = fieldNamePrefix
     ? fieldNamePrefix + "." + item.Name
     : item.Name;
+  //todo check item type and value type to select display wrapper
   return (
-    <p>
+    <span>
       {item.DisplayName}
       : {toString(get(data, currentFieldNamePrefix))}
-    </p>
+    </span>
   );
 };
 
