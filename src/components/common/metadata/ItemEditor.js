@@ -1,12 +1,12 @@
 import React, {PropTypes} from 'react';
 import FreeText from './wrapper/editor/FreeText';
-import {get} from 'lodash';
+import {get, toString} from 'lodash';
 
 const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
   const currentFieldNamePrefix = fieldNamePrefix
     ? fieldNamePrefix + "." + item.Name
     : item.Name;
-  const value = get(data, currentFieldNamePrefix);
+  const value = toString(get(data, currentFieldNamePrefix));//todo remove toString in the future
   //todo check item type and value type to select input wrapper
   return (<FreeText
     key={item.Name}
