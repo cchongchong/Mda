@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import TextBox from '../TextBox';
+import FreeText from './wrapper/editor/FreeText';
 import {get} from 'lodash';
 
 const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
@@ -8,7 +8,7 @@ const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
     : item.Name;
   const value = get(data, currentFieldNamePrefix);
   //todo check item type and value type to select input wrapper
-  return (<TextBox
+  return (<FreeText
     key={item.Name}
     name={currentFieldNamePrefix}
     label={item.DisplayName}

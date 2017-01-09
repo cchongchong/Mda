@@ -1,16 +1,15 @@
 import React, {PropTypes} from 'react';
+import FreeText from './wrapper/viewer/FreeText';
 import {get, toString} from 'lodash';
 
 const ItemViewer = ({fieldNamePrefix, item, data}) => {
   const currentFieldNamePrefix = fieldNamePrefix
     ? fieldNamePrefix + "." + item.Name
     : item.Name;
+  const value = toString(get(data, currentFieldNamePrefix));//todo remove toString in the future
   //todo check item type and value type to select display wrapper
   return (
-    <span>
-      {item.DisplayName}
-      : {toString(get(data, currentFieldNamePrefix))}
-    </span>
+    <FreeText name={currentFieldNamePrefix} label={item.DisplayName} value={value} />
   );
 };
 

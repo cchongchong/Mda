@@ -1,16 +1,16 @@
 import React, {PropTypes} from 'react';
 import {toString} from 'lodash';
 
-const String = ({data}) => {
+const String = ({value}) => {
   return (
     <span>
-      {toString(data)}
+      {toString(value)}
     </span>
   );
 };
 
 String.propTypes = {
-  data: PropTypes.object.isRequired
+  value: PropTypes.string.isRequired
 };
 
 export default String;
