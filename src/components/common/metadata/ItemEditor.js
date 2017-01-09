@@ -6,8 +6,8 @@ const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
   const currentFieldNamePrefix = fieldNamePrefix
     ? fieldNamePrefix + "." + item.Name
     : item.Name;
-  const value = get(data, currentFieldNamePrefix); //todo remove toString in the future
-  //todo check item type and value type to select input wrapper
+  const value = get(data, currentFieldNamePrefix);
+  //todo check value type in selected input wrapper
   const selectWrapper = (type) => {
     switch (type) {
       default:
