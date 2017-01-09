@@ -13,13 +13,15 @@ const ArraySectionViewer = ({fieldNamePrefix, section, data}) => {
     <CollapsiblePanel title={section.DisplayName} collapsed>
       <table className="table table-striped">
         <thead>
-          {section
-            .Items
-            .map(item => (
-              <th key={item.Name}>
-                {item.DisplayName}
-              </th>
-            ))}
+          <tr>
+            {section
+              .Items
+              .map(item => (
+                <th key={item.Name}>
+                  {item.DisplayName}
+                </th>
+              ))}
+          </tr>
         </thead>
         <tbody>
           {list && list.length > 0 && section.Items && section.Items.length > 0
@@ -30,7 +32,9 @@ const ArraySectionViewer = ({fieldNamePrefix, section, data}) => {
                     .map(item => <td key={item.Name + index}><String value={get(value, item.Name)}/></td>)}</tr>
               );
             })
-            : ""}
+            : <tr>
+              <td colSpan={section.Items.length} className="text-center">No data available</td>
+            </tr>}
         </tbody>
       </table>
     </CollapsiblePanel>

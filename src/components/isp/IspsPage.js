@@ -16,7 +16,9 @@ class IspsPage extends React.Component{
         <h1>ISPs</h1>
           <table className="table">
             <thead>
-              <th>Name</th>
+              <tr>
+                <th>Name</th>
+              </tr>
             </thead>
             <tbody>
               {isps.map(isp=>
