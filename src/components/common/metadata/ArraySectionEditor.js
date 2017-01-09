@@ -28,13 +28,16 @@ const ArraySectionEditor = ({fieldNamePrefix, section, data, onChange}) => {
       {list && list.length > 0 && section.Items && section.Items.length > 0
         ? list.map((value, index) => {
           return (
-            <div className="panel panel-default" key={index}><div className="panel-body">{section
-                .Items
-                .map(item => <div key={item.Name + index}><ItemEditor
-                  fieldNamePrefix={currentFieldNamePrefix + "[" + index + "]"}
-                  item={item}
-                  data={data}
-                  onChange={onChange}/></div>)}</div></div>
+            <div className="panel panel-default" key={index}>
+              <div className="panel-body">{section
+                  .Items
+                  .map(item => <div key={item.Name + index}><ItemEditor
+                    fieldNamePrefix={currentFieldNamePrefix + "[" + index + "]"}
+                    item={item}
+                    data={data}
+                    onChange={onChange}/></div>)}
+              </div>
+            </div>
           );
         })
         : ""}
