@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as ispActions from '../../actions/ispActions';
 import SectionEditor from '../common/metadata/SectionEditor';
-import {set} from 'lodash';
+import {set, get} from 'lodash';
 
 class IspSectionEditPage extends React.Component {
   constructor(props, context) {
@@ -35,7 +35,13 @@ class IspSectionEditPage extends React.Component {
     if (changes && changes.length > 0) {
       let isp = this.state.isp;
       for (let change of changes) {
-        set(isp, change.name, change.value);
+        if(change.deleteIndex){
+          let list=get(isp,change.name);
+          list.splice(change.deleteIndex, 1);
+          set(isp, change.name, list);
+        }else{
+          set(isp, change.name, change.value);
+        }
       }
       this.setState({isp: isp});
     }

@@ -21,21 +21,34 @@ const ArraySectionEditor = ({fieldNamePrefix, section, data, onChange}) => {
       }));
     onChange(changes);
   };
+  const remove=(index)=>{
+    let changes = [];
+    changes.push({name:currentFieldNamePrefix,deleteIndex:index});
+    onChange(changes);
+  };
   return (
     <fieldset>
       <legend>{section.DisplayName}</legend>
       <p>{section.Description}</p>
       {list && list.length > 0 && section.Items && section.Items.length > 0
         ? list.map((value, index) => {
+          const removeLine=()=>{
+            remove(index);
+          };
           return (
             <div className="panel panel-default" key={index}>
-              <div className="panel-body">{section
+              <div className="panel-body">
+                {section
                   .Items
                   .map(item => <div key={item.Name + index}><ItemEditor
                     fieldNamePrefix={currentFieldNamePrefix + "[" + index + "]"}
                     item={item}
                     data={data}
                     onChange={onChange}/></div>)}
+                <button type="button" className="btn btn-default btn-sm" onClick={removeLine}>
+                  <span className="glyphicon glyphicon-minus"></span>
+                  Remove
+                </button>
               </div>
             </div>
           );
