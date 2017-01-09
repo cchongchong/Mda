@@ -23,18 +23,16 @@ class CollapsiblePanel extends React.Component {
     const { collapsed, headers } = this.state;
 
     return (
-      <div className="panel panelBarItem">
-        <div className={`header ${collapsed ? 'collapsed' : 'expanded'}`} onClick={this.exChangeCollapsed}>
+      <div className="panel panel-default">
+        <div className={`panel-heading ${collapsed ? 'collapsed' : 'expanded'}`} onClick={this.exChangeCollapsed}>
           <div className={`arrow ${collapsed ? 'collapse' : 'expand'}`}></div>
           <h4>{this.props.title}</h4>
           <div className="form-action TaskDetailLink">
             {this.renderHeaders(headers)}
           </div>
         </div>
-        <div className={`body ${collapsed ? 'bodyHidden' : 'bodyVisible'}`}>
-          <div className="read-only">
-            {this.props.children}
-          </div>
+        <div className={`panel-body ${collapsed ? 'hidden' : ''}`}>
+          {this.props.children}
         </div>
       </div>
     );

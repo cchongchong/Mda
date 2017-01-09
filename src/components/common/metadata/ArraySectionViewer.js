@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {get} from 'lodash';
 import CollapsiblePanel from '../CollapsiblePanel';
-import ItemViewer from './ItemViewer';
+import String from '../String';
 
 const ArraySectionViewer = ({fieldNamePrefix, section, data}) => {
   const currentFieldNamePrefix = fieldNamePrefix
@@ -11,7 +11,7 @@ const ArraySectionViewer = ({fieldNamePrefix, section, data}) => {
   //todo need business rule to avoid "MultiEntry" section has inner sections
   return (
     <CollapsiblePanel title={section.DisplayName} collapsed>
-      <table>
+      <table className="table table-striped">
         <thead>
           {section
             .Items
@@ -27,10 +27,7 @@ const ArraySectionViewer = ({fieldNamePrefix, section, data}) => {
               return (
                 <tr key={index}>{section
                     .Items
-                    .map(item => <td key={item.Name + index}><ItemViewer
-                      fieldNamePrefix={currentFieldNamePrefix + "[" + index + "]"}
-                      item={item}
-                      data={data}/></td>)}</tr>
+                    .map(item => <td key={item.Name + index}><String data={get(value, item.Name)}/></td>)}</tr>
               );
             })
             : ""}
