@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import FreeText from './wrapper/editor/FreeText';
-import {get, toString} from 'lodash';
+import {get} from 'lodash';
 
 const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
   const currentFieldNamePrefix = fieldNamePrefix
@@ -15,7 +15,7 @@ const ItemEditor = ({fieldNamePrefix, item, data, onChange}) => {
           key={item.Name}
           name={currentFieldNamePrefix}
           label={item.DisplayName}
-          value={toString(value)}
+          value={value}
           onChange={onChange}/>);
     }
   };

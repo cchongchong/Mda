@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import String from '../../../String';
+import {toString} from 'lodash';
 
 const FreeText = ({name, label, value}) => {
 
@@ -7,7 +8,7 @@ const FreeText = ({name, label, value}) => {
     <div className="form-group">
       <label className="control-label" htmlFor={name}>{label}</label>
       <div className="form-control-static">
-        <String value={value}/>
+        <String value={toString(value)}/>
       </div>
     </div>
   );
@@ -16,7 +17,7 @@ const FreeText = ({name, label, value}) => {
 FreeText.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string
+  value: PropTypes.any
 };
 
 export default FreeText;

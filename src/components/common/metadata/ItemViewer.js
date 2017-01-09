@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import FreeText from './wrapper/viewer/FreeText';
-import {get, toString} from 'lodash';
+import {get} from 'lodash';
 
 const ItemViewer = ({fieldNamePrefix, item, data}) => {
   const currentFieldNamePrefix = fieldNamePrefix
@@ -14,7 +14,7 @@ const ItemViewer = ({fieldNamePrefix, item, data}) => {
         return (<FreeText
           name={currentFieldNamePrefix}
           label={item.DisplayName}
-          value={toString(value)}/>);
+          value={value}/>);
     }
   };
   return (selectWrapper(item.SectionItemType));

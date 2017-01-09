@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import TextBox from '../../../TextBox';
+import {toString} from 'lodash';
 
 const FreeText=({name, label, onChange, placeholder, value, error})=>{
   const prepareChanges=(event)=>{
@@ -16,7 +17,7 @@ const FreeText=({name, label, onChange, placeholder, value, error})=>{
   return(
     <div className={wrapperClass}>
       <label htmlFor={name}>{label}</label>
-      <TextBox name={name} placeholder={placeholder} value={value} onChange={prepareChanges}/>
+      <TextBox name={name} placeholder={placeholder} value={toString(value)} onChange={prepareChanges}/>
     </div>
   );
 };
@@ -26,7 +27,7 @@ FreeText.propTypes={
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.any,
   error: PropTypes.string
 };
 
